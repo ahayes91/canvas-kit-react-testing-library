@@ -6,10 +6,10 @@ import CanvasKitButtonWithoutIcon from "./CanvasKitButtonWithoutIcon";
 
 test("This fails with TypeError", () => {
   render(<CanvasKitButton />);
-  expect(screen.getByRole("button", { name: CanvasKitButton })).toBeInTheDocument();
+  expect(screen.getByRole("button", { name: 'CanvasKitButton' })).toBeInTheDocument();
 });
 
-test("This passes", () => {
+test("This should pass", () => {
   render(<CanvasKitButtonWithoutIcon />);
-  expect(screen.getByRole("button", { name: CanvasKitButton })).toBeInTheDocument();
+  expect(screen.getByRole("button", { name: 'CanvasKitButton' })).toBeInTheDocument();
 });
