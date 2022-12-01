@@ -5,7 +5,8 @@ import userEvent from "@testing-library/user-event";
 import { ButtonWithTooltipAndIcon } from "../ButtonWithTooltipAndIcon";
 import { ButtonWithTooltipNoIcon } from "../ButtonWithTooltipNoIcon";
 import { ButtonWithIcon } from "../ButtonWithIcon";
-import { ButtonWithIconWithPosition } from "../ButtonWithIconWithPosition";
+import { ButtonWithIconWithIncorrectPosition } from "../ButtonWithIconWithIncorrectPosition";
+import { ButtonWithIconWithCorrectPosition } from "../ButtonWithIconWithCorrectPosition";
 
 test("Button with tooltip and icon fails", async () => {
   const { getByRole, queryByText } = render(
@@ -43,9 +44,21 @@ test("Button with icon and no tooltip or position fails", async () => {
   });
 });
 
-test("Button with icon and position and no tooltip passes", async () => {
+test("Button with icon and incorrect position and no tooltip passes", async () => {
   const { getByRole, queryByText } = render(
-    <ButtonWithIconWithPosition handleClick={() => {}} label="With icon" />
+    <ButtonWithIconWithIncorrectPosition handleClick={() => {}} label="With icon" />
+  );
+  const openModalButton = getByRole("button", { name: "With icon" }); // This fails
+  expect(openModalButton).toBeInTheDocument();
+  userEvent.click(openModalButton);
+  await waitFor(() => {
+    expect(queryByText("Whatever")).not.toBeInTheDocument();
+  });
+});
+
+test("Button with icon and correct position and no tooltip fails", async () => {
+  const { getByRole, queryByText } = render(
+    <ButtonWithIconWithCorrectPosition handleClick={() => {}} label="With icon" />
   );
   const openModalButton = getByRole("button", { name: "With icon" }); // This fails
   expect(openModalButton).toBeInTheDocument();
