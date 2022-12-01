@@ -1,17 +1,17 @@
 import React from "react";
 import { TertiaryButton } from "@workday/canvas-kit-react/button";
 import { OverflowTooltip } from "@workday/canvas-kit-react/tooltip";
-import { chevronUpSmallIcon } from "@workday/canvas-system-icons-web";
+import { starIcon } from "@workday/canvas-system-icons-web";
 
-export default ({handleClick}) => (
+export const ButtonWithTooltipAndIcon = ({ handleClick, label, ref }) => (
   <OverflowTooltip>
     <TertiaryButton
-      icon={chevronUpSmallIcon}
-      iconPosition="right"
       onClick={handleClick}
       size="small"
+      icon={starIcon}
+      ref={ref}
     >
-      CanvasKitButton
+      {label}
     </TertiaryButton>
   </OverflowTooltip>
 );
