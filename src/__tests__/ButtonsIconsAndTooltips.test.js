@@ -7,12 +7,12 @@ import { ButtonWithIcon } from "../ButtonWithIcon";
 import { ButtonWithIconWithIncorrectPosition } from "../ButtonWithIconWithIncorrectPosition";
 import { ButtonWithIconWithCorrectPosition } from "../ButtonWithIconWithCorrectPosition";
 
-test("Button with tooltip and icon fails", async () => {
+test("Button with tooltip and icon should pass", async () => {
   const handleClick = jest.fn();
   render(
     <ButtonWithTooltipAndIcon handleClick={handleClick} label="With icon" />
   );
-  const openModalButton = screen.getByRole("button", { name: "With icon" }); // This fails
+  const openModalButton = screen.getByRole("button", { name: "With icon" });
   expect(openModalButton).toBeInTheDocument();
 });
 
@@ -25,12 +25,12 @@ test("Button with tooltip and no icon passes", async () => {
   expect(openModalButton).toBeInTheDocument();
 });
 
-test("Button with icon and no tooltip or position fails", async () => {
+test("Button with icon and no tooltip or position should pass", async () => {
   const handleClick = jest.fn();
   render(
     <ButtonWithIcon handleClick={handleClick} label="With icon" />
   );
-  const openModalButton = screen.getByRole("button", { name: "With icon" }); // This fails
+  const openModalButton = screen.getByRole("button", { name: "With icon" });
   expect(openModalButton).toBeInTheDocument();
 });
 
@@ -39,15 +39,15 @@ test("Button with icon and incorrect position and no tooltip passes", async () =
   render(
     <ButtonWithIconWithIncorrectPosition handleClick={handleClick} label="With icon" />
   );
-  const openModalButton = screen.getByRole("button", { name: "With icon" }); // This fails
+  const openModalButton = screen.getByRole("button", { name: "With icon" });
   expect(openModalButton).toBeInTheDocument();
 });
 
-test("Button with icon and correct position and no tooltip fails", async () => {
+test("Button with icon and correct position and no tooltip should pass", async () => {
   const handleClick = jest.fn();
   render(
     <ButtonWithIconWithCorrectPosition handleClick={handleClick} label="With icon" />
   );
-  const openModalButton = screen.getByRole("button", { name: "With icon" }); // This fails
+  const openModalButton = screen.getByRole("button", { name: "With icon" });
   expect(openModalButton).toBeInTheDocument();
 });
