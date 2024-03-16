@@ -1,6 +1,6 @@
-import "@testing-library/jest-dom/extend-expect";
+import "@testing-library/jest-dom";
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { ButtonWithTooltipAndIcon } from "../ButtonWithTooltipAndIcon";
 import { ButtonWithTooltipNoIcon } from "../ButtonWithTooltipNoIcon";
 import { ButtonWithIcon } from "../ButtonWithIcon";
@@ -9,45 +9,45 @@ import { ButtonWithIconWithCorrectPosition } from "../ButtonWithIconWithCorrectP
 
 test("Button with tooltip and icon fails", async () => {
   const handleClick = jest.fn();
-  const { getByRole } = render(
+  render(
     <ButtonWithTooltipAndIcon handleClick={handleClick} label="With icon" />
   );
-  const openModalButton = getByRole("button", { name: "With icon" }); // This fails
+  const openModalButton = screen.getByRole("button", { name: "With icon" }); // This fails
   expect(openModalButton).toBeInTheDocument();
 });
 
 test("Button with tooltip and no icon passes", async () => {
   const handleClick = jest.fn();
-  const { getByRole } = render(
+  render(
     <ButtonWithTooltipNoIcon handleClick={handleClick} label="Without icon" />
   );
-  const openModalButton = getByRole("button", { name: "Without icon" });
+  const openModalButton = screen.getByRole("button", { name: "Without icon" });
   expect(openModalButton).toBeInTheDocument();
 });
 
 test("Button with icon and no tooltip or position fails", async () => {
   const handleClick = jest.fn();
-  const { getByRole } = render(
+  render(
     <ButtonWithIcon handleClick={handleClick} label="With icon" />
   );
-  const openModalButton = getByRole("button", { name: "With icon" }); // This fails
+  const openModalButton = screen.getByRole("button", { name: "With icon" }); // This fails
   expect(openModalButton).toBeInTheDocument();
 });
 
 test("Button with icon and incorrect position and no tooltip passes", async () => {
   const handleClick = jest.fn();
-  const { getByRole } = render(
+  render(
     <ButtonWithIconWithIncorrectPosition handleClick={handleClick} label="With icon" />
   );
-  const openModalButton = getByRole("button", { name: "With icon" }); // This fails
+  const openModalButton = screen.getByRole("button", { name: "With icon" }); // This fails
   expect(openModalButton).toBeInTheDocument();
 });
 
 test("Button with icon and correct position and no tooltip fails", async () => {
   const handleClick = jest.fn();
-  const { getByRole } = render(
+  render(
     <ButtonWithIconWithCorrectPosition handleClick={handleClick} label="With icon" />
   );
-  const openModalButton = getByRole("button", { name: "With icon" }); // This fails
+  const openModalButton = screen.getByRole("button", { name: "With icon" }); // This fails
   expect(openModalButton).toBeInTheDocument();
 });
